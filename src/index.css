@@ -1,69 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Karla', sans-serif;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --background-color: #F8FAFC;
+  --primary: #10B981;
+  --primary-hover: #057D5A;
+  --white-color: rgb(255, 255, 255);
+  --description: #64748B;
+  --box-shadow: rgba(128, 128, 128, 0.2);
+  --box-shadow-hover: rgba(128, 128, 128, 0.3);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+::selection {
+  background-color: var(--primary);
+  color: var(--white-color);
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: 1200px;
+  background-color: var(--background-color);
+  margin-bottom: 3vh;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  align-items: start;
+  margin-top: 3vh;
+  padding: 0 40px;
+}
+
+.main-title {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 42px;
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  font-weight: 400;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.main-title-border {
+  width: 13%;
+  margin-top: 10px;
+  text-align: center;
+  border-top: 4px solid var(--primary);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+.refresh-container,
+.not-interested-container {
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  background-color: var(--white-color);
+  border: 1px solid var(--box-shadow);
+  border-top: none;
+  border-radius: 5px;
+  padding-bottom: 20px;
+  height: auto;
+  box-shadow: 0 2px 10px var(--box-shadow);
+  transition: all 1s;
+}
+
+.card:hover {
+  scale: 1.03;
+  box-shadow: 0 2px 10px var(--box-shadow-hover);
+}
+
+.content {
+  padding: 20px;
+}
+
+.price {
+  position: absolute;
+  background-color: var(--primary);
+  color: var(--white-color);
+  padding: 8px 15px;
+  top: 0;
+  right: 0;
+  border-top-right-radius: 5px;
+}
+
+.refresh {
+  background-color: var(--primary);
+  padding: 5px 15px;
+  border: none;
+  font-size: 16px;
+  color: var(--white-color);
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  border-radius: 5px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.4s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.refresh:hover {
+  background-color: var(--primary-hover);
+}
+
+.description {
+  color: var(--description);
+  display: inline;
+  line-height: 25px;
+}
+
+.read-more {
+  background-color: transparent;
+  border: none;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.card-title {
+  text-align: center;
+  margin: 0 5px;
+  margin-bottom: 15px;
+}
+
+.not-interested {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 5px 10px;
+  background-color: transparent;
+  transition: all 0.4s;
+  border-radius: 5px;
+  width: 90%;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.not-interested:hover {
+  color: var(--white-color);
+  background-color: var(--primary);
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 30px;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 10px;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .main-title {
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+  }
+
+  .card:hover {
+    scale: 1;
   }
 }
