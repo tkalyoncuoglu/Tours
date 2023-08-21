@@ -2,14 +2,14 @@ import Content from './Content'
 import Image from './Image'
 import NotInterestedButton from './NotInterestedButton'
 
-const Card = ({ id, title, price, imgUrl, description, myTours, setMyTours }) => {
+const Card = ({ id, title, price, imgUrl, description }) => {
   return (
     <>
       <div className="card">
         <span className="price">{price}</span>
         <Image imgUrl={imgUrl} title={title} />
         <Content title={title} description={description} />
-        <NotInterestedButton id={id} myTours={myTours} setMyTours={setMyTours} />
+        <NotInterestedButton id={id} />
       </div>
     </>
   )

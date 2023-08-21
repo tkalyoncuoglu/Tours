@@ -1,7 +1,7 @@
-const ReadMoreButton = ({ readMore, text}) => {
+const ReadMoreButton = ({ readMore, short}) => {
   return (
     <button type="button" className="read-more" onClick={readMore}>
-      {text.length < 181 ? 'Read More' : 'Show Less'}
+      {short ? 'Read More' : 'Show Less'}
     </button>
   )
 }

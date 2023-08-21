@@ -2,12 +2,12 @@ import { useState } from "react";
 import ReadMoreButton from "./ReadMoreButton";
 
 const Content = ({ title, description }) => {
-  // set the maximum number of characters in the description to 180
-  const shortDescription = description.substring(0, 180);
-  const [text, setText] = useState(shortDescription);
+  const isSmallText = description.length < 181;
+  const shortDescription = isSmallText ? description.substring(0, 180) : description.substring(0, 180) + "...";
+  const [short, setShort] = useState(true);
 
   const readMore = () => {
-    text.length < 181 ? setText(description) : setText(shortDescription);
+    setShort(!short);
   };
 
   return (
@@ -15,9 +15,9 @@ const Content = ({ title, description }) => {
       <div className="content">
         <h2 className="card-title">{title}</h2>
         <p className="description">
-          {text + (text.length < 181 ? '... ' : '')}
+          {short ? shortDescription : description}
         </p>
-        <ReadMoreButton readMore={readMore} text={text} />
+        {!isSmallText && <ReadMoreButton readMore={readMore} short={short} />}
       </div>
     </>
   )
